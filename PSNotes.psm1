@@ -20,6 +20,8 @@ foreach($folder in @('private', 'public')){
 # Load all commands to noteObjects
 Initialize-PSNotesJsonFile
 
+Write-Host $script:noteObjects.Count -f Yellow
+
 # load Aliases for commands
 $noteObjects | ForEach-Object{
     Set-Alias -Name $_.Alias -Value Get-PSNoteAlias
@@ -34,7 +36,7 @@ if(-not (Get-Command -Name 'Set-Clipboard' -ErrorAction SilentlyContinue)){
         }
     } else {
         $warning = "Cmdlet 'Set-Clipboard' not found. Copy functionality will not work until this is resovled. " +
-            "`n`t You can install the ClipboardText module from PowerShell Gallery, to add this functionality. " + 
+            "`n`t You can install the ClipboardText module from PowerShell Gallery, to add this functionality. " +
             "`n`n`t`t Install-Module -Name ClipboardText`n" +
             "`n`t More Details: https://www.powershellgallery.com/packages/ClipboardText"
         Write-Warning $warning

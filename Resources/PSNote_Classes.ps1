@@ -1,4 +1,9 @@
-﻿# Create the PSNote class
+﻿if ($PSVersionTable.PSVersion.Major -le 5 -and $PSVersionTable.PSVersion.Major -gt 2)
+{
+    Import-Module "$PSScriptRoot\Newtonsoft.Json.dll" -ErrorAction Stop
+}
+
+# Create the PSNote class
 class PSNote {
     [string]$Note
 	[string]$Snippet
