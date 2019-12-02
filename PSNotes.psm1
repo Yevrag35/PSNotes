@@ -20,8 +20,6 @@ foreach($folder in @('private', 'public')){
 # Load all commands to noteObjects
 Initialize-PSNotesJsonFile
 
-Write-Host $script:noteObjects.Count -f Yellow
-
 # load Aliases for commands
 $noteObjects | ForEach-Object{
     Set-Alias -Name $_.Alias -Value Get-PSNoteAlias
